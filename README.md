@@ -6,7 +6,7 @@ I built this project to explore Microsoft Fabric's Data Agent capability using a
 
 ## What this does
 
-You connect to the agent and ask things like:
+You connect to a agent called SrDataAnalyst and ask things like:
 
 - *"Who won the 2019 Monaco Grand Prix?"*
 - *"How many times did Schumacher win the championship?"*
@@ -50,9 +50,9 @@ Sourced from [this Kaggle dataset](https://www.kaggle.com/datasets/rohanrao/form
 
 **Storage:** Files live in Azure Blob Storage, authenticated via SAS token stored in the Lakehouse.
 
-**Loading:** PySpark notebook reads each CSV from blob and writes it as a Delta table into the Fabric Lakehouse. The SAS credentials are read from a JSON file rather than hardcoded.
+**Loading:** PySpark notebook reads each CSV from blob and writes it as a Delta table into the Fabric Lakehouse. The SAS credentials are read from a JSON file.
 
-**Agent setup:** Three things needed configuring —
+**Agent setup:** Three things needed —
 - Agent instructions (what the agent is, what data it covers, how to behave)
 - Data source instructions (the non-obvious rules — like always use `positionOrder` not `position` for race winners, and always filter to `MAX(round)` for season champions)
 - Example queries (question + SQL pairs that teach the agent the correct patterns for your specific schema)
@@ -103,7 +103,6 @@ F1-Fabric-Data-Agent/
 4. Create a Data Agent in Fabric, attach the Lakehouse, paste the instructions, import the example queries JSON
 5. Publish and test
 
-Don't commit `sascredentials.json` to GitHub.
 
 ---
 
